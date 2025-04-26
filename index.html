@@ -2,7 +2,7 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>আল-জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা ও এতিমখানা</title>
 
   <!-- Custom Fonts -->
@@ -19,12 +19,10 @@
     }
   </style>
 
-  <!-- External Fonts (optional) -->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap" rel="stylesheet">
 
   <!-- Main Styles -->
   <style>
-    /* Base styles */
     * {
       margin: 0;
       padding: 0;
@@ -37,8 +35,11 @@
       text-align: center;
       overflow-x: hidden;
     }
-
-    /* Header */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
     header {
       display: flex;
       justify-content: space-between;
@@ -75,8 +76,6 @@
       margin: 4px 0;
       border-radius: 2px;
     }
-
-    /* Responsive Navbar */
     @media (max-width: 768px) {
       nav {
         display: none;
@@ -95,8 +94,6 @@
         display: flex;
       }
     }
-
-    /* Header Content */
     .header-content {
       margin: 20px;
       animation: fadeInDown 1.5s ease;
@@ -110,19 +107,10 @@
       font-size: 20px;
       color: #555;
     }
-
     @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
     }
-
-    /* Gallery */
     .gallery {
       display: flex;
       justify-content: center;
@@ -139,27 +127,13 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       transition: transform 0.3s;
     }
-    .image-box img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
     .image-box:hover {
       transform: scale(1.05);
     }
-
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from {opacity: 0; transform: translateY(50px);}
+      to {opacity: 1; transform: translateY(0);}
     }
-
-    /* Main Button */
     .main-button {
       display: inline-block;
       margin: 30px;
@@ -177,14 +151,11 @@
     .main-button:hover {
       background: #005b2a;
     }
-
     @keyframes bounceIn {
       0% { transform: scale(0.5); opacity: 0; }
       60% { transform: scale(1.2); opacity: 1; }
       100% { transform: scale(1); }
     }
-
-    /* Intro Overlay */
     .intro-overlay {
       position: fixed;
       top: 0;
@@ -213,7 +184,6 @@
       from {transform: translateY(50px); opacity: 0;}
       to {transform: translateY(0); opacity: 1;}
     }
-
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -236,8 +206,6 @@
       background: #007f39;
       color: white;
     }
-
-    /* Intro Content Section */
     #introContent {
       display: none;
       background: #fff;
@@ -253,8 +221,6 @@
       text-align: center;
       margin-bottom: 20px;
     }
-
-    /* Footer */
     .footer-bar {
       background: #000;
       color: white;
@@ -271,102 +237,88 @@
 
 <body>
 
-  <!-- Header -->
-  <header>
-    <img src="images/logo.png" alt="লোগো" class="logo">
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <nav id="menu">
-      <a onclick="goHome()">হোম</a>
-      <a onclick="showIntroSection()">পরিচিতি</a>
-      <a href="#">বিভাগ সমূহ</a>
-      <a href="#">ভর্তি</a>
-      <a href="#">আবাসন</a>
-      <a href="#">লাইব্রেরী</a>
-      <a href="#">ফলাফল</a>
-      <a href="#">নোটিশ</a>
-      <a href="#">যোগাযোগ</a>
-    </nav>
-  </header>
-
-  <!-- Header Content -->
-  <div class="header-content">
-    <h1 class="title">আল-জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা ও এতিমখানা</h1>
-    <p class="address">ধোপাদী, নওয়াপাড়া, অভয়নগর, যশোর | মোবাইলঃ ০১৯৬৯-৮০২০৯৭</p>
+<header>
+  <img src="images/logo.png" alt="লোগো" class="logo">
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
   </div>
+  <nav id="menu">
+    <a onclick="goHome()">হোম</a>
+    <a onclick="showIntroSection()">পরিচিতি</a>
+    <a href="#">বিভাগ সমূহ</a>
+    <a href="#">ভর্তি</a>
+    <a href="#">আবাসন</a>
+    <a href="#">লাইব্রেরী</a>
+    <a href="#">ফলাফল</a>
+    <a href="#">নোটিশ</a>
+    <a href="#">যোগাযোগ</a>
+  </nav>
+</header>
 
-  <!-- Gallery -->
-  <div class="gallery" id="gallerySection">
-    <div class="image-box"><img src="images/pic1.jpg" alt="ছবি ১"></div>
-    <div class="image-box"><img src="images/pic2.jpg" alt="ছবি ২"></div>
-    <div class="image-box"><img src="images/pic3.jpg" alt="ছবি ৩"></div>
-    <div class="image-box"><img src="images/pic4.jpg" alt="ছবি ৪"></div>
+<div class="header-content">
+  <h1 class="title">আল-জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা ও এতিমখানা</h1>
+  <p class="address">ধোপাদী, নওয়াপাড়া, অভয়নগর, যশোর | মোবাইলঃ ০১৯৬৯-৮০২০৯৭</p>
+</div>
+
+<div class="gallery" id="gallerySection">
+  <div class="image-box"><img src="images/pic1.jpg" alt="ছবি ১"></div>
+  <div class="image-box"><img src="images/pic2.jpg" alt="ছবি ২"></div>
+  <div class="image-box"><img src="images/pic3.jpg" alt="ছবি ৩"></div>
+  <div class="image-box"><img src="images/pic4.jpg" alt="ছবি ৪"></div>
+</div>
+
+<a class="main-button" onclick="showIntro()">প্রবেশ করুন</a>
+
+<div class="intro-overlay" id="intro">
+  <div class="intro-text">জামিয়ার ওয়েবসাইটে আপনাকে স্বাগতম</div>
+  <div class="menu-grid">
+    <div class="menu-item" onclick="goHome()">হোম</div>
+    <div class="menu-item" onclick="showIntroSection()">পরিচিতি</div>
+    <div class="menu-item">বিভাগ সমূহ</div>
+    <div class="menu-item">ভর্তি</div>
+    <div class="menu-item">আবাসন</div>
+    <div class="menu-item">লাইব্রেরী</div>
+    <div class="menu-item">ফলাফল</div>
+    <div class="menu-item">নোটিশ</div>
+    <div class="menu-item">যোগাযোগ</div>
   </div>
+</div>
 
-  <!-- Main Button -->
-  <a class="main-button" onclick="showIntro()">প্রবেশ করুন</a>
+<div id="introContent">
+  <h2>আমাদের জামিয়ার পরিচিতি</h2>
+  <p>
+    আল্লাহর অশেষ মেহেরবানিতে ২০০৭ সালে যশোর জেলার অভয়নগর উপজেলার নওয়াপাড়া পৌরসভার ধোপাদী গ্রামে প্রতিষ্ঠিত হয় ‘আল জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা ও এতিমখানা’।<br><br>
+    মুহতামিম মুফতী মোঃ দেলোয়ার হোসাইন সাহেব (দা.বা.)'র নেতৃত্বে পরিচালিত হচ্ছে। বর্তমানে এখানে ২২ জন শিক্ষক-শিক্ষিকা, ৫ জন কর্মচারী এবং ৪৭৭ জন শিক্ষার্থী রয়েছে।
+  </p>
+</div>
 
-  <!-- Intro Overlay -->
-  <div class="intro-overlay" id="intro">
-    <div class="intro-text">জামিয়ার ওয়েবসাইটে আপনাকে স্বাগতম</div>
-    <div class="menu-grid">
-      <div class="menu-item" onclick="goHome()">হোম</div>
-      <div class="menu-item" onclick="showIntroSection()">পরিচিতি</div>
-      <div class="menu-item">বিভাগ সমূহ</div>
-      <div class="menu-item">ভর্তি</div>
-      <div class="menu-item">আবাসন</div>
-      <div class="menu-item">লাইব্রেরী</div>
-      <div class="menu-item">ফলাফল</div>
-      <div class="menu-item">নোটিশ</div>
-      <div class="menu-item">যোগাযোগ</div>
-    </div>
-  </div>
+<div class="footer-bar">
+  ওয়েব ডেভেলপার: মুহাঃ ইব্রাহীম খলীল | যোগাযোগ: ০১৩০৫-৩৫৯৬৯১
+</div>
 
-  <!-- Intro Content Section -->
-  <div id="introContent">
-    <h2>আমাদের জামিয়ার পরিচিতি</h2>
-    <p>
-      আল্লাহর অশেষ মেহেরবানিতে ২০০৭ সালে যশোর জেলার অভয়নগর উপজেলার নওয়াপাড়া পৌরসভার ধোপাদী গ্রামে প্রতিষ্ঠিত হয় ‘আল জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা ও এতিমখানা’।<br><br>
-      মুহতামিম মুফতী মোঃ দেলোয়ার হোসাইন সাহেব (দা.বা.)'র নেতৃত্বে পরিচালিত হচ্ছে। বর্তমানে এখানে ২২ জন শিক্ষক-শিক্ষিকা, ৫ জন কর্মচারী এবং ৪৭৭ জন শিক্ষার্থী রয়েছে।
-    </p>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer-bar">
-    ওয়েব ডেভেলপার: মুহাঃ ইব্রাহীম খলীল | যোগাযোগ: ০১৩০৫-৩৫৯৬৯১
-  </div>
-
-  <!-- JavaScript -->
-  <script>
-    function toggleMenu() {
-      document.getElementById('menu').classList.toggle('active');
-    }
-
-    function showIntro() {
-      document.getElementById('intro').classList.add('active');
-    }
-
-    function hideIntro() {
-      document.getElementById('intro').classList.remove('active');
-    }
-
-    function showIntroSection() {
-      hideIntro();
-      document.getElementById('introContent').style.display = 'block';
-      document.getElementById('gallerySection').style.display = 'none';
-      document.querySelector('.main-button').style.display = 'none';
-    }
-
-    function goHome() {
-      hideIntro();
-      document.getElementById('introContent').style.display = 'none';
-      document.getElementById('gallerySection').style.display = 'flex';
-      document.querySelector('.main-button').style.display = 'inline-block';
-    }
-  </script>
+<script>
+function toggleMenu() {
+  document.getElementById('menu').classList.toggle('active');
+}
+function showIntro() {
+  document.getElementById('intro').classList.add('active');
+}
+function hideIntro() {
+  document.getElementById('intro').classList.remove('active');
+}
+function showIntroSection() {
+  hideIntro();
+  document.getElementById('introContent').style.display = 'block';
+  document.getElementById('gallerySection').style.display = 'none';
+  document.querySelector('.main-button').style.display = 'none';
+}
+function goHome() {
+  hideIntro();
+  document.getElementById('introContent').style.display = 'none';
+  document.getElementById('gallerySection').style.display = 'flex';
+  document.querySelector('.main-button').style.display = 'inline-block';
+}
+</script>
 
 </body>
 </html>
