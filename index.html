@@ -45,8 +45,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      background-color: #004d33;
-      color: white;
+      background: #004d33;
+      color: #fff;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -59,7 +59,7 @@
       gap: 20px;
     }
     nav a {
-      color: white;
+      color: #fff;
       text-decoration: none;
       font-weight: bold;
       cursor: pointer;
@@ -72,7 +72,7 @@
     .hamburger span {
       height: 3px;
       width: 25px;
-      background: white;
+      background: #fff;
       margin: 4px 0;
       border-radius: 2px;
     }
@@ -80,7 +80,7 @@
       nav {
         display: none;
         flex-direction: column;
-        background-color: #004d33;
+        background: #004d33;
         position: absolute;
         top: 70px;
         right: 20px;
@@ -99,17 +99,13 @@
       animation: fadeInDown 1.5s ease;
     }
     .title {
-      font-size: 36px;
+      font-size: 32px;
       color: #007f39;
     }
     .address {
       margin-top: 10px;
-      font-size: 20px;
+      font-size: 18px;
       color: #555;
-    }
-    @keyframes fadeInDown {
-      from {opacity: 0; transform: translateY(-30px);}
-      to {opacity: 1; transform: translateY(0);}
     }
     .gallery {
       display: flex;
@@ -120,7 +116,7 @@
       animation: fadeInUp 2s ease;
     }
     .image-box {
-      background: white;
+      background: #fff;
       border-radius: 10px;
       overflow: hidden;
       width: 180px;
@@ -130,16 +126,12 @@
     .image-box:hover {
       transform: scale(1.05);
     }
-    @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(50px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
     .main-button {
       display: inline-block;
       margin: 30px;
       padding: 12px 24px;
       background: #007f39;
-      color: white;
+      color: #fff;
       font-size: 20px;
       border-radius: 10px;
       text-decoration: none;
@@ -150,11 +142,6 @@
     }
     .main-button:hover {
       background: #005b2a;
-    }
-    @keyframes bounceIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      60% { transform: scale(1.2); opacity: 1; }
-      100% { transform: scale(1); }
     }
     .intro-overlay {
       position: fixed;
@@ -180,10 +167,6 @@
       margin-bottom: 20px;
       animation: moveUp 1.5s ease-out forwards;
     }
-    @keyframes moveUp {
-      from {transform: translateY(50px); opacity: 0;}
-      to {transform: translateY(0); opacity: 1;}
-    }
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -193,7 +176,7 @@
       max-width: 600px;
     }
     .menu-item {
-      background: white;
+      background: #fff;
       padding: 12px;
       border-radius: 8px;
       color: #004d33;
@@ -204,7 +187,7 @@
     }
     .menu-item:hover {
       background: #007f39;
-      color: white;
+      color: #fff;
     }
     #introContent {
       display: none;
@@ -223,7 +206,7 @@
     }
     .footer-bar {
       background: #000;
-      color: white;
+      color: #fff;
       font-size: 14px;
       text-align: center;
       padding: 10px;
@@ -231,6 +214,24 @@
       bottom: 0;
       width: 100%;
       z-index: 999;
+    }
+    /* Animations */
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(50px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      60% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    @keyframes moveUp {
+      from {transform: translateY(50px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
     }
   </style>
 </head>
@@ -287,8 +288,10 @@
 <div id="introContent">
   <h2>আমাদের জামিয়ার পরিচিতি</h2>
   <p>
-    আল্লাহর অশেষ মেহেরবানিতে ২০০৭ সালে যশোর জেলার অভয়নগর উপজেলার নওয়াপাড়া পৌরসভার ধোপাদী গ্রামে প্রতিষ্ঠিত হয় ‘আল জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা ও এতিমখানা’।<br><br>
-    মুহতামিম মুফতী মোঃ দেলোয়ার হোসাইন সাহেব (দা.বা.)'র নেতৃত্বে পরিচালিত হচ্ছে। বর্তমানে এখানে ২২ জন শিক্ষক-শিক্ষিকা, ৫ জন কর্মচারী এবং ৪৭৭ জন শিক্ষার্থী রয়েছে।
+    আল্লাহর অশেষ মেহেরবানিতে ২০০৭ সালে যশোর জেলার অভয়নগর উপজেলার নওয়াপাড়া পৌরসভার ধোপাদী গ্রামে প্রতিষ্ঠিত হয় 
+    ‘আল জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা ও এতিমখানা’।<br><br>
+    মুহতামিম মুফতী মোঃ দেলোয়ার হোসাইন সাহেব (দা.বা.)'র নেতৃত্বে পরিচালিত হচ্ছে। 
+    বর্তমানে এখানে ২২ জন শিক্ষক-শিক্ষিকা, ৫ জন কর্মচারী এবং ৪৭৭ জন শিক্ষার্থী রয়েছে।
   </p>
 </div>
 
