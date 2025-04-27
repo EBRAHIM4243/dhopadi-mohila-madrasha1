@@ -265,7 +265,7 @@
         .result-box button {
             width: 95%;
             padding: 12px;
-            background-color: #4CAF50;
+            background-color: #004b04;
             color: white;
             border: none;
             border-radius: 5px;
@@ -274,8 +274,39 @@
             margin-top: 15px;
         }
         .result-box button:hover {
-            background-color: #45a049;
-        }
+    background-color: #006600;
+    color: #ffffff;
+}
+        #departments {
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+    padding-bottom: 80px;
+}
+.department-card {
+  background: white;
+    width: 400px;
+    padding: 30px 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 auto 25px auto;
+    display: block;
+}
+.department-card h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.department-card p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+.department-card:hover {
+    background-color: #e6ffe6;
+    transform: translateY(-5px);
+}
   </style>
 </head>
 
@@ -289,9 +320,9 @@
   <nav id="menu">
     <a onclick="goHome()">হোম</a>
     <a onclick="showIntroSection()">পরিচিতি</a>
-    <a href="#">বিভাগ সমূহ</a>
-    <a href="#">ভর্তি</a>
-    <a href="#">আবাসন</a>
+    <a onclick="showDepartments()">বিভাগ সমূহ</a>
+    <a href="#">ভর্তি কার্যক্রম</a>
+    <a href="#">আবাসন ফি</a>
     <a href="#">লাইব্রেরী</a>
     <a onclick="showResults()">ফলাফল</a>
     <a href="#">নোটিশ</a>
@@ -318,9 +349,9 @@
   <div class="menu-grid">
     <div class="menu-item" onclick="goHome()">হোম</div>
     <div class="menu-item" onclick="showIntroSection()">পরিচিতি</div>
-    <div class="menu-item">বিভাগ সমূহ</div>
-    <div class="menu-item">ভর্তি</div>
-    <div class="menu-item">আবাসন</div>
+    <div class="menu-item" onclick="showDepartments()">বিভাগ সমূহ</div>
+    <div class="menu-item">ভর্তি কার্যক্রম</div>
+    <div class="menu-item">আবাসন ফি</div>
     <div class="menu-item">লাইব্রেরী</div>
     <div class="menu-item" onclick="showResults()">ফলাফল</div>
     <div class="menu-item">নোটিশ</div>
@@ -337,6 +368,25 @@
  আল জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা — নারীদের দ্বীনি শিক্ষায় আত্মনির্ভরশীল করে গড়ে তুলতে একটি নির্ভরযোগ্য প্রতিষ্ঠান।
    </p>
  </div>
+
+ <div id="departments" style="display: none;">
+  <div class="department-card">
+      <h2>নূরানী বিভাগ</h2>
+      <p>ছোট ছোট শিক্ষার্থীদের কুরআন শিক্ষার প্রথম ধাপ। এখানে আরবি হরফ, বানান মিল, ও সহীহ উচ্চারণের উপর বিশেষ গুরুত্ব প্রদান করা হয়।</p>
+  </div>
+  <div class="department-card">
+      <h2>নাযেরা বিভাগ</h2>
+      <p>শিক্ষার্থীদের কুরআন মাজিদ নির্ভুলভাবে মুখস্থ পড়ার প্রশিক্ষণ দেওয়া হয়। সহীহ তাজবিদ ও মাকরাজের সাথে পবিত্র কুরআন পাঠের দক্ষতা অর্জন করানো হয়।</p>
+  </div>
+  <div class="department-card">
+      <h2>হিফজ বিভাগ</h2>
+      <p>কুরআনুল কারীম সম্পূর্ণ মুখস্থ করানোর সুপরিকল্পিত পাঠক্রম পরিচালিত হয়। প্রতিটি শিক্ষার্থীর অগ্রগতি নিয়মিত যাচাই করা হয়।</p>
+  </div>
+  <div class="department-card">
+      <h2>কিতাব বিভাগ</h2>
+      <p>ইসলামী জ্ঞানের উচ্চতর অধ্যয়ন; আরবি ব্যাকরণ, ফিকহ, হাদীস, তাফসীরসহ বিভিন্ন শাস্ত্রে পাঠদান করা হয়। অভিজ্ঞ আলিমগণের তত্ত্বাবধানে শিক্ষা প্রদান করা হয়।</p>
+  </div>
+</div>
 
  <div class="footer-bar">
   ©2025 ওয়েব ডেভেলপার: By Ebrahim khali | Contact: 01305359691
@@ -385,23 +435,35 @@
  }
  function showIntroSection() {
    hideIntro();
-   document.getElementById('introContent').style.display = 'block';
    document.getElementById('gallerySection').style.display = 'none';
    document.querySelector('.main-button').style.display = 'none';
+   document.getElementById('resultsContent').style.display = 'none';
+   document.getElementById('departments').style.display = 'none';
+   document.getElementById('introContent').style.display = 'block';
  }
  function goHome() {
   hideIntro();
   document.getElementById('introContent').style.display = 'none';
   document.getElementById('resultsContent').style.display = 'none';
+  document.getElementById('departments').style.display = 'none';
   document.getElementById('gallerySection').style.display = 'flex';
   document.querySelector('.main-button').style.display = 'inline-block';
- }
+}
  function showResults() {
   hideIntro();
   document.getElementById('introContent').style.display = 'none';
   document.getElementById('gallerySection').style.display = 'none';
+  document.getElementById('departments').style.display = 'none';
   document.querySelector('.main-button').style.display = 'none';
   document.getElementById('resultsContent').style.display = 'block';
+}
+function showDepartments() {
+  hideIntro();
+  document.getElementById('introContent').style.display = 'none';
+  document.getElementById('gallerySection').style.display = 'none';
+  document.getElementById('resultsContent').style.display = 'none';
+  document.querySelector('.main-button').style.display = 'none';
+  document.getElementById('departments').style.display = 'block';
 }
  </script>
  
