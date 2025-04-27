@@ -311,10 +311,12 @@
 
 <header>
   <img src="images/logo.png" alt="লোগো" class="logo">
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+  <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
-  <nav id="menu">
+  <nav>
     <a onclick="goHome()">হোম</a>
     <a onclick="showIntroSection()">পরিচিতি</a>
     <a onclick="showDepartments()">বিভাগ সমূহ</a>
