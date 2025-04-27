@@ -59,55 +59,44 @@
     .logo {
       height: 50px;
     }
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .hamburger {
+    .menu-toggle {
       display: none;
       flex-direction: column;
       cursor: pointer;
     }
-    .hamburger span {
-      height: 3px;
+    .menu-toggle div {
       width: 25px;
-      background: #fff;
+      height: 3px;
+      background-color: white;
       margin: 4px 0;
-      border-radius: 2px;
+    }
+    nav {
+      display: flex;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      font-family: 'Baloo Da 2', cursive;
     }
     @media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-    .nav-links {
+      nav {
+        display: none;
         flex-direction: column;
+        background-color: #6200ff;
         position: absolute;
         top: 60px;
-        right: 20px;
-        background: white;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        right: 0;
         width: 200px;
-        overflow: hidden;
-        max-height: 0;
-        transition: max-height 0.4s ease;
-        border-radius: 8px;
+      }
+      nav.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
     }
-    .nav-links li a {
-        color: #333;
-        padding: 12px 20px;
-        border-bottom: 1px solid #eee;
-    }
-    .nav-links.open {
-        max-height: 300px; /* খুললে মেনু নিচে নামবে */
-    }
-}
     .header-content {
       margin: 30px 10px;
       animation: fadeInDown 1.5s ease;
