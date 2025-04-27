@@ -440,20 +440,29 @@ nav a:hover {
 </div>
 
  <script>
- function toggleMenu() {
+function toggleMenu() {
   const menu = document.getElementById('menu');
   menu.classList.toggle('show');
+  
+  // Toggle animation effect on the hamburger icon
+  const lines = document.querySelectorAll('.menu-toggle div');
+  lines.forEach((line, index) => {
+    if (menu.classList.contains('show')) {
+      // Animate to form 'X' when menu is open
+      if (index === 0) {
+        line.style.transform = 'rotate(45deg) translate(5px, 5px)';
+      } else if (index === 1) {
+        line.style.opacity = '0';
+      } else if (index === 2) {
+        line.style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      }
+    } else {
+      // Reset the icon when menu is closed
+      line.style.transform = 'rotate(0) translate(0, 0)';
+      line.style.opacity = '1';
+    }
+  });
 }
-// Close the menu if clicked outside
-document.addEventListener('click', function(event) {
-  const menu = document.getElementById('menu');
-  const menuToggle = document.querySelector('.menu-toggle');
-
-  // If the clicked target is outside the menu or the menu toggle, close the menu
-  if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
-    menu.classList.remove('show');
-  }
-});
  function showIntro() {
    document.getElementById('intro').classList.add('active');
  }
