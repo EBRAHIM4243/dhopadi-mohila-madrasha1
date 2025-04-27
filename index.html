@@ -59,60 +59,64 @@
     .logo {
       height: 50px;
     }
-    .menu-toggle {
-  display: none;
-  flex-direction: column;
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header styling */
+header {
+  position: relative;
+  background: #0b400e;
+  padding: 10px 20px;
+}
+
+/* Menu Icon */
+.menu-icon {
+  font-size: 28px;
+  color: white;
   cursor: pointer;
-  position: fixed;
-  bottom: 20px; /* Position it towards the bottom of the screen */
-  right: 20px;
-  z-index: 1000; /* Ensure it's on top of other content */
-  transition: transform 0.3s ease;
+  display: none; /* desktop এ hide থাকবে */
 }
-.menu-toggle div {
-  width: 30px;
-  height: 4px;
-  background-color: #ffffff;
-  margin: 4px 0;
-  border-radius: 4px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+
+/* Menu Styling */
+.menu {
+  background: #0b4017;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease-in-out;
 }
-nav.show {
-  width: 250px;
-  display: flex;
-  transform: translateX(0);
+
+/* Menu Items */
+.menu ul {
+  list-style: none;
+  text-align: center;
 }
-nav a {
+
+.menu ul li {
+  border-top: 1px solid #ccc;
+}
+
+.menu ul li a {
+  display: block;
+  padding: 18px;
   color: white;
   text-decoration: none;
-  margin-left: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  font-family: 'Baloo Da 2', cursive;
-  text-transform: uppercase;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  font-size: 22px;
 }
-nav a:hover {
-  transform: scale(1.1);
-  opacity: 0.9;
+
+.menu ul li a:hover {
+  background: #f4b400;
+  color: rgb(0, 74, 39);
 }
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background-color: #00452d;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-      }
-      nav.show {
-        display: flex;
-      }
-      .menu-toggle {
-        display: flex;
-      }
-    }
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+}
     .header-content {
       margin: 30px 10px;
       animation: fadeInDown 1.5s ease;
@@ -440,28 +444,22 @@ nav a:hover {
 
  <script>
 function toggleMenu() {
-  const menu = document.getElementById('menu');
-  menu.classList.toggle('show');
-  
-  // Toggle animation effect on the hamburger icon
-  const lines = document.querySelectorAll('.menu-toggle div');
-  lines.forEach((line, index) => {
-    if (menu.classList.contains('show')) {
-      // Animate to form 'X' when menu is open
-      if (index === 0) {
-        line.style.transform = 'rotate(45deg) translate(5px, 5px)';
-      } else if (index === 1) {
-        line.style.opacity = '0';
-      } else if (index === 2) {
-        line.style.transform = 'rotate(-45deg) translate(5px, -5px)';
-      }
-    } else {
-      // Reset the icon when menu is closed
-      line.style.transform = 'rotate(0) translate(0, 0)';
-      line.style.opacity = '1';
-    }
-  });
+  const menu = document.getElementById('mobileMenu');
+  if (menu.style.maxHeight) {
+    menu.style.maxHeight = null;
+  } else {
+    menu.style.maxHeight = menu.scrollHeight + "px";
+  }
 }
+
+// Close menu if clicked outside
+window.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobileMenu');
+  const icon = document.querySelector('.menu-icon');
+  if (!menu.contains(e.target) && !icon.contains(e.target)) {
+    menu.style.maxHeight = null;
+  }
+});
  function showIntro() {
    document.getElementById('intro').classList.add('active');
  }
