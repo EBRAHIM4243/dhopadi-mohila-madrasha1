@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>আল-জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা ও এতিমখানা</title>
 
   <!-- Custom Fonts -->
@@ -81,24 +82,30 @@
       margin: 4px 0;
       border-radius: 2px;
     }
-    @media (max-width: 768px) {
-      nav {
+    @media (min-width: 768px) {
+    .menu-icon {
         display: none;
-        flex-direction: column;
-        background: #004d33;
-        position: absolute;
-        top: 70px;
-        right: 20px;
-        padding: 15px;
-        border-radius: 10px;
-      }
-      nav.active {
-        display: flex;
-      }
-      .hamburger {
-        display: flex;
-      }
     }
+    .nav-links {
+        position: static;
+        display: flex;
+        flex-direction: row;
+        background: none;
+        box-shadow: none;
+        width: auto;
+    }
+    .nav-links li a {
+        color: white;
+        font-size: 18px;
+        padding: 10px 15px;
+    }
+    .content h1 {
+        font-size: 36px;
+    }
+    .content p {
+        font-size: 20px;
+    }
+}
     .header-content {
       margin: 30px 10px;
       animation: fadeInDown 1.5s ease;
@@ -427,6 +434,19 @@
  function toggleMenu() {
    document.getElementById('menu').classList.toggle('active');
  }
+ const menuIcon = document.getElementById('menu-icon');
+const navLinks = document.getElementById('nav-links');
+
+menuIcon.addEventListener('click', () => {
+    navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
+});
+
+// অন্য কোথাও ক্লিক করলে মেনু বন্ধ হবে
+document.addEventListener('click', function(event) {
+    if (!menuIcon.contains(event.target) && !navLinks.contains(event.target)) {
+        navLinks.style.display = 'none';
+    }
+});
  function showIntro() {
    document.getElementById('intro').classList.add('active');
  }
