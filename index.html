@@ -81,22 +81,27 @@
       font-family: 'Baloo Da 2', cursive;
     }
     @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background-color: #6200ff;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-      }
-      nav.show {
-        display: flex;
-      }
-      .menu-toggle {
-        display: flex;
-      }
-    }
+   .hamburger {
+      display: block; /* Show hamburger icon on mobile */
+   }
+
+   #menu.active {
+      display: block;
+      position: fixed; /* Fix the menu to the top */
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 100%;
+      background-color: #fff;
+      flex-direction: column; /* Stack menu items vertically */
+   }
+
+   #menu a {
+      text-align: center;
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+   }
+}
     .header-content {
       margin: 30px 10px;
       animation: fadeInDown 1.5s ease;
