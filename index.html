@@ -81,26 +81,13 @@
       font-family: 'Baloo Da 2', cursive;
     }
     @media (max-width: 768px) {
-   .hamburger {
-      display: block; /* Show hamburger icon on mobile */
-   }
+  nav {
+    display: none; /* Hidden by default on mobile */
+  }
 
-   #menu.active {
-      display: block;
-      position: fixed; /* Fix the menu to the top */
-      top: 0;
-      right: 0;
-      left: 0;
-      height: 100%;
-      background-color: #fff;
-      flex-direction: column; /* Stack menu items vertically */
-   }
-
-   #menu a {
-      text-align: center;
-      padding: 20px;
-      border-bottom: 1px solid #ccc;
-   }
+  .menu-toggle {
+    display: flex; /* Show hamburger icon on mobile */
+  }
 }
     .header-content {
       margin: 30px 10px;
@@ -429,21 +416,18 @@
 
  <script>
  function toggleMenu() {
-   document.getElementById('menu').classList.toggle('active');
- }
- const menuToggle = document.getElementById('menu-toggle');
-const navLinks = document.getElementById('nav-links');
-
-menuToggle.addEventListener('click', function(event) {
-    event.stopPropagation();
-    navLinks.classList.toggle('open');
-});
-
-// মেনু ছাড়া অন্য কোথাও ক্লিক করলে মেনু বন্ধ হবে
+  const menu = document.getElementById('menu');
+  menu.classList.toggle('show');
+}
+// Close the menu if clicked outside
 document.addEventListener('click', function(event) {
-    if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
-        navLinks.classList.remove('open');
-    }
+  const menu = document.getElementById('menu');
+  const menuToggle = document.querySelector('.menu-toggle');
+
+  // If the clicked target is outside the menu or the menu toggle, close the menu
+  if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+    menu.classList.remove('show');
+  }
 });
  function showIntro() {
    document.getElementById('intro').classList.add('active');
