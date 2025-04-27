@@ -210,16 +210,16 @@
       margin-bottom: 20px;
     }
     .footer-bar {
-      background: #000;
-      color: #fff;
-      font-size: 14px;
-      text-align: center;
-      padding: 10px;
-      width: 100%;
-      position: fixed;
-      bottom: 0;
-      margin-top: 0px;
-    }
+  background: #000;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  position: fixed; /* Make the footer stay at the bottom */
+  bottom: 0; /* Position it at the bottom of the screen */
+  left: 0;
+}
 
     /* Animations */
     @keyframes fadeInDown {
@@ -239,6 +239,43 @@
       from {transform: translateY(50px); opacity: 0;}
       to {transform: translateY(0); opacity: 1;}
     }
+    .result-box {
+    background: white;
+    width: 400px;
+    padding: 30px 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 auto; /* This will center the result box */
+    display: block; /* Make sure it is a block element */
+}
+        .result-box h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 28px;
+        }
+        .result-box select, .result-box input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .result-box button {
+            width: 95%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .result-box button:hover {
+            background-color: #45a049;
+        }
   </style>
 </head>
 
@@ -256,7 +293,7 @@
     <a href="#">ভর্তি</a>
     <a href="#">আবাসন</a>
     <a href="#">লাইব্রেরী</a>
-    <a href="#">ফলাফল</a>
+    <a onclick="showResults()">ফলাফল</a>
     <a href="#">নোটিশ</a>
     <a href="#">যোগাযোগ</a>
   </nav>
@@ -285,7 +322,7 @@
     <div class="menu-item">ভর্তি</div>
     <div class="menu-item">আবাসন</div>
     <div class="menu-item">লাইব্রেরী</div>
-    <div class="menu-item">ফলাফল</div>
+    <div class="menu-item" onclick="showResults()">ফলাফল</div>
     <div class="menu-item">নোটিশ</div>
     <div class="menu-item">যোগাযোগ</div>
   </div>
@@ -300,11 +337,42 @@
  আল জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা — নারীদের দ্বীনি শিক্ষায় আত্মনির্ভরশীল করে গড়ে তুলতে একটি নির্ভরযোগ্য প্রতিষ্ঠান।
    </p>
  </div>
- 
+
  <div class="footer-bar">
-   web developer : By Ebrahim khali | Contact : 01305359691
- </div>
+  ©2025 ওয়েব ডেভেলপার: By Ebrahim khali | Contact: 01305359691
+</div>
  
+ <div id="resultsContent" style="display: none;">
+  <div class="result-box">
+    <h2>পরিক্ষার ফলাফল</h2>
+    <form action="get_result.php" method="POST">
+        <select name="year" required>
+            <option value="">সাল নির্বাচন করুন</option>
+            <option value="2024">২০২৪</option>
+            <option value="2025">২০২৫</option>
+        </select><br>
+
+        <select name="class" required>
+            <option value="">শ্রেণী নির্বাচন করুন</option>
+            <option value="নূরানী">নূরানী</option>
+            <option value="ইবতেদাইয়্যাহ">ইবতেদাইয়্যাহ</option>
+            <option value="মিজান">মিজান</option>
+            <option value="নাহবেমীর">নাহবেমীর</option>
+            <option value="হেদায়াতুন্নাহু">হেদায়াতুন্নাহু</option>
+            <option value="কাফিয়া">কাফিয়া</option>
+            <option value="শরহে বেকায়া">শরহে বেকায়া</option>
+            <option value="হেদায়া">হেদায়া</option>
+            <option value="জালালাইন">জালালাইন</option>
+            <option value="মেশকাত">মেশকাত</option>
+            <option value="দাওরায়ে হাদীস">দাওরায়ে হাদীস</option>
+        </select><br>
+
+        <input type="text" name="roll" placeholder="রোল নাম্বার দিন" required><br>
+
+        <button type="submit">ফলাফল দেখুন</button>
+    </form>
+</div>
+
  <script>
  function toggleMenu() {
    document.getElementById('menu').classList.toggle('active');
@@ -322,11 +390,19 @@
    document.querySelector('.main-button').style.display = 'none';
  }
  function goHome() {
-   hideIntro();
-   document.getElementById('introContent').style.display = 'none';
-   document.getElementById('gallerySection').style.display = 'flex';
-   document.querySelector('.main-button').style.display = 'inline-block';
+  hideIntro();
+  document.getElementById('introContent').style.display = 'none';
+  document.getElementById('resultsContent').style.display = 'none';
+  document.getElementById('gallerySection').style.display = 'flex';
+  document.querySelector('.main-button').style.display = 'inline-block';
  }
+ function showResults() {
+  hideIntro();
+  document.getElementById('introContent').style.display = 'none';
+  document.getElementById('gallerySection').style.display = 'none';
+  document.querySelector('.main-button').style.display = 'none';
+  document.getElementById('resultsContent').style.display = 'block';
+}
  </script>
  
  </body>
