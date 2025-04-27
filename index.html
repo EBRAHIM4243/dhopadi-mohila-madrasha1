@@ -2,7 +2,7 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <title>আল-জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা ও এতিমখানা</title>
 
@@ -82,28 +82,30 @@
       margin: 4px 0;
       border-radius: 2px;
     }
-    @media (min-width: 768px) {
-    .menu-icon {
-        display: none;
+    @media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
     }
     .nav-links {
-        position: static;
-        display: flex;
-        flex-direction: row;
-        background: none;
-        box-shadow: none;
-        width: auto;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        width: 200px;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s ease;
+        border-radius: 8px;
     }
     .nav-links li a {
-        color: white;
-        font-size: 18px;
-        padding: 10px 15px;
+        color: #333;
+        padding: 12px 20px;
+        border-bottom: 1px solid #eee;
     }
-    .content h1 {
-        font-size: 36px;
-    }
-    .content p {
-        font-size: 20px;
+    .nav-links.open {
+        max-height: 300px; /* খুললে মেনু নিচে নামবে */
     }
 }
     .header-content {
@@ -227,7 +229,6 @@
   bottom: 0; /* Position it at the bottom of the screen */
   left: 0;
 }
-
     /* Animations */
     @keyframes fadeInDown {
       from {opacity: 0; transform: translateY(-30px);}
@@ -434,17 +435,18 @@
  function toggleMenu() {
    document.getElementById('menu').classList.toggle('active');
  }
- const menuIcon = document.getElementById('menu-icon');
+ const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
 
-menuIcon.addEventListener('click', () => {
-    navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
+menuToggle.addEventListener('click', function(event) {
+    event.stopPropagation();
+    navLinks.classList.toggle('open');
 });
 
-// অন্য কোথাও ক্লিক করলে মেনু বন্ধ হবে
+// মেনু ছাড়া অন্য কোথাও ক্লিক করলে মেনু বন্ধ হবে
 document.addEventListener('click', function(event) {
-    if (!menuIcon.contains(event.target) && !navLinks.contains(event.target)) {
-        navLinks.style.display = 'none';
+    if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+        navLinks.classList.remove('open');
     }
 });
  function showIntro() {
