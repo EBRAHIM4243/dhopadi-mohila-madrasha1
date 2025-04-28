@@ -245,13 +245,23 @@ nav a:hover::after {
 #introContent {
   display: none;
   background: #fff;
-  margin: 30px auto;
+  margin: 30px auto 50px auto;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  padding-bottom: 80px;
   max-width: 800px;
   text-align: left;
+  height: 400px;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox এর জন্য */
+  -ms-overflow-style: none; /* IE ও Edge পুরোনো ভার্সনের জন্য */
 }
+
+#introContent::-webkit-scrollbar {
+  display: none; /* Chrome, Safari এবং অন্যান্য ওয়েবকিট ব্রাউজারের জন্য */
+}
+
 #introContent h2 {
   color: #004d33;
   text-align: center;
@@ -285,6 +295,7 @@ nav a:hover::after {
 @keyframes moveUp {
   from {transform: translateY(50px); opacity: 0;}
   to {transform: translateY(0); opacity: 1;}
+  
 }
 .result-box {
   background: white;
@@ -483,32 +494,27 @@ nav a:hover::after {
 </div>
 
 <script>
+// মেনু টগল ফাংশন
 function toggleMenu() {
   const menu = document.getElementById('mobileMenu');
-  if (menu.style.maxHeight) {
-    menu.style.maxHeight = null;
-  } else {
-    menu.style.maxHeight = menu.scrollHeight + "px";
-  }
+  menu.classList.toggle('open');
 }
 
-// Close menu if clicked outside
+// বাইরে ক্লিক করলে মেনু বন্ধ হবে
 window.addEventListener('click', function(e) {
   const menu = document.getElementById('mobileMenu');
   const icon = document.querySelector('.menu-icon');
-  
-  // Check if the click is outside the menu or the icon
+
   if (!menu.contains(e.target) && !icon.contains(e.target)) {
-    menu.style.maxHeight = null;
+    menu.classList.remove('open');
   }
 });
 
-// Close menu after selecting an item
-const menuItems = document.querySelectorAll('#mobileMenu a'); // Select all menu items
-menuItems.forEach(item => {
+// মেনু আইটেমে ক্লিক করলে মেনু বন্ধ হবে
+document.querySelectorAll('#mobileMenu a').forEach(item => {
   item.addEventListener('click', function() {
     const menu = document.getElementById('mobileMenu');
-    menu.style.maxHeight = null; // Close the menu
+    menu.classList.remove('open');
   });
 });
   // Show intro screen
