@@ -245,27 +245,42 @@ nav a:hover::after {
 #introContent {
   display: none;
   background: #fff;
-  margin: 30px auto 50px auto;
+  margin: 50px auto 50px auto;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   padding-bottom: 80px;
-  max-width: 800px;
+  max-width: 700px;
   text-align: left;
-  height: 400px;
+  height: 500px;
   overflow-y: auto;
-  scrollbar-width: none; /* Firefox এর জন্য */
-  -ms-overflow-style: none; /* IE ও Edge পুরোনো ভার্সনের জন্য */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge old */
+  font-size: 18px; /* কন্টেন্টের ফন্ট সাইজ */
 }
-
 #introContent::-webkit-scrollbar {
-  display: none; /* Chrome, Safari এবং অন্যান্য ওয়েবকিট ব্রাউজারের জন্য */
+  display: none; /* Chrome, Safari */
 }
 
 #introContent h2 {
   color: #004d33;
   text-align: center;
   margin-bottom: 20px;
+  font-size: 26px; /* হেডিংয়ের ফন্ট সাইজ */
+}
+
+/* ✅ মোবাইল স্ক্রিনের জন্য রেস্পন্সিভ মিডিয়া কুয়েরি */
+@media screen and (max-width: 600px) {
+  #introContent {
+    margin: 20px 10px 40px 10px;
+    height: auto; /* মোবাইলে উচ্চতা auto রাখলে কনটেন্ট অনুযায়ী প্রসারিত হবে */
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  #introContent h2 {
+    font-size: 20px;
+  }
 }
 .footer-bar {
   background: #000;
@@ -277,6 +292,7 @@ nav a:hover::after {
   position: fixed;
   bottom: 0;
   left: 0;
+  z-index: 999; /* এটা দিলে ভালো হয়, যেন সব সময় উপরে থাকে */
 }
 /* Animations */
 @keyframes fadeInDown {
@@ -375,11 +391,14 @@ nav a:hover::after {
   width: 100%;
   max-width: 500px;
 }
+.content {
+      padding-bottom: 80px; /* যতটা জায়গা চান + ফুটারের উচ্চতা */
+    }
 </style>
 </head>
 
 <body>
-
+    <div class="content">
 <header>
   <img src="images/logo.png" alt="লোগো" class="logo">
   <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">
@@ -500,21 +519,25 @@ function toggleMenu() {
   menu.classList.toggle('open');
 }
 
-// বাইরে ক্লিক করলে মেনু বন্ধ হবে
-window.addEventListener('click', function(e) {
-  const menu = document.getElementById('mobileMenu');
-  const icon = document.querySelector('.menu-icon');
-
-  if (!menu.contains(e.target) && !icon.contains(e.target)) {
-    menu.classList.remove('open');
-  }
-});
-
-// মেনু আইটেমে ক্লিক করলে মেনু বন্ধ হবে
-document.querySelectorAll('#mobileMenu a').forEach(item => {
-  item.addEventListener('click', function() {
+document.addEventListener('DOMContentLoaded', function() {
+  // বাইরে ক্লিক করলে মেনু বন্ধ হবে
+  window.addEventListener('click', function(e) {
     const menu = document.getElementById('mobileMenu');
-    menu.classList.remove('open');
+    const icon = document.querySelector('.menu-icon');
+
+    if (menu && icon && !menu.contains(e.target) && !icon.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+
+  // মেনু আইটেমে ক্লিক করলে মেনু বন্ধ হবে
+  document.querySelectorAll('#mobileMenu a').forEach(item => {
+    item.addEventListener('click', function() {
+      const menu = document.getElementById('mobileMenu');
+      if (menu) {
+        menu.classList.remove('open');
+      }
+    });
   });
 });
   // Show intro screen
