@@ -250,13 +250,12 @@ nav a:hover::after {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   padding-bottom: 80px;
-  max-width: 700px;
+  max-width: 800px;
   text-align: left;
-  height: 500px;
+  height: 400px;
   overflow-y: auto;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge old */
-  font-size: 18px; /* কন্টেন্টের ফন্ট সাইজ */
 }
 #introContent::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
@@ -266,7 +265,6 @@ nav a:hover::after {
   color: #004d33;
   text-align: center;
   margin-bottom: 20px;
-  font-size: 26px; /* হেডিংয়ের ফন্ট সাইজ */
 }
 
 /* ✅ মোবাইল স্ক্রিনের জন্য রেস্পন্সিভ মিডিয়া কুয়েরি */
@@ -355,10 +353,10 @@ nav a:hover::after {
   color: #ffffff;
 }
 #departments {
-  max-height: 69vh;
+  max-height: 80vh;
   overflow-y: auto;
-  padding: 30px;
-  padding-bottom: 110px;
+  padding: 20px;
+  padding-bottom: 80px;
 }
 .department-card {
   background: white;
@@ -382,19 +380,8 @@ nav a:hover::after {
 }
 .department-card:hover {
   background-color: #e6ffe6;
-  transform: translateY(-1px);
+  transform: translateY(-5px);
 }
-@media screen and (max-width: 600px) {
-  #departments {
-    margin: 20px 10px 40px 10px;
-    height: auto; /* মোবাইলে উচ্চতা auto রাখলে কনটেন্ট অনুযায়ী প্রসারিত হবে */
-    padding: 15px;
-    font-size: 16px;
-  }
-
-  #introContent h2 {
-    font-size: 20px;
-  }
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
