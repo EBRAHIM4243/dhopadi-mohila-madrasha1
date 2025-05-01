@@ -250,9 +250,9 @@ nav a:hover::after {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   padding-bottom: 80px;
-  max-width: 800px;
+  max-width: 700px;
   text-align: left;
-  height: 400px;
+  height: 700px;
   overflow-y: auto;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge old */
@@ -353,7 +353,6 @@ nav a:hover::after {
   color: #ffffff;
 }
 #departments {
-  max-height: 80vh;
   overflow-y: auto;
   padding: 20px;
   padding-bottom: 80px;
@@ -399,14 +398,16 @@ nav a:hover::after {
     <div class="content">
 <header>
   <img src="images/logo.png" alt="লোগো" class="logo">
-  <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">
+  <div class="menu-toggle">
     <div></div>
     <div></div>
     <div></div>
   </div>
+  
   <nav>
     <a onclick="goHome()">হোম</a>
     <a onclick="showIntroSection()">পরিচিতি</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfcQvdfP9jH3AGoiOY02ubyFUbIcbapMfX9_FKOev1UqLT6cA/viewform?usp=header">তথ্য প্রদান</a>
     <a onclick="showDepartments()">বিভাগ সমূহ</a>
     <a href="#">ভর্তি কার্যক্রম</a>
     <a href="#">আবাসন ফি</a>
@@ -415,6 +416,7 @@ nav a:hover::after {
     <a href="#">নোটিশ</a>
     <a href="#">যোগাযোগ</a>
   </nav>
+  
 </header>
 
 <div class="header-content">
@@ -511,30 +513,29 @@ nav a:hover::after {
 </div>
 
 <script>
-// মেনু টগল ফাংশন
-function toggleMenu() {
-  const menu = document.getElementById('mobileMenu');
-  menu.classList.toggle('open');
-}
+document.addEventListener('DOMContentLoaded', function () {
+  const menu = document.querySelector('nav'); // id বাদ দিয়ে সরাসরি nav ধরো
+  const icon = document.querySelector('.menu-toggle');
 
-document.addEventListener('DOMContentLoaded', function() {
-  // বাইরে ক্লিক করলে মেনু বন্ধ হবে
-  window.addEventListener('click', function(e) {
-    const menu = document.getElementById('mobileMenu');
-    const icon = document.querySelector('.menu-icon');
+  // মেনু টগল
+  if (icon) {
+    icon.addEventListener('click', function (e) {
+      e.stopPropagation();
+      menu.classList.toggle('show');
+    });
+  }
 
-    if (menu && icon && !menu.contains(e.target) && !icon.contains(e.target)) {
-      menu.classList.remove('open');
+  // বাইরে ক্লিক করলে মেনু বন্ধ
+  window.addEventListener('click', function (e) {
+    if (!menu.contains(e.target) && !icon.contains(e.target)) {
+      menu.classList.remove('show');
     }
   });
 
-  // মেনু আইটেমে ক্লিক করলে মেনু বন্ধ হবে
-  document.querySelectorAll('#mobileMenu a').forEach(item => {
-    item.addEventListener('click', function() {
-      const menu = document.getElementById('mobileMenu');
-      if (menu) {
-        menu.classList.remove('open');
-      }
+  // মেনুতে ক্লিক করলে মেনু বন্ধ হবে
+  menu.querySelectorAll('a').forEach(item => {
+    item.addEventListener('click', function () {
+      menu.classList.remove('show');
     });
   });
 });
