@@ -405,18 +405,18 @@ nav a:hover::after {
   </div>
   
   <nav>
-    <a onclick="goHome()">হোম</a>
-    <a onclick="showIntroSection()">পরিচিতি</a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfcQvdfP9jH3AGoiOY02ubyFUbIcbapMfX9_FKOev1UqLT6cA/viewform?usp=header">তথ্য প্রদান</a>
-    <a onclick="showDepartments()">বিভাগ সমূহ</a>
-    <a href="#">ভর্তি কার্যক্রম</a>
-    <a href="#">আবাসন ফি</a>
-    <a href="#">লাইব্রেরী</a>
-    <a onclick="showResults()">ফলাফল</a>
-    <a href="#">নোটিশ</a>
-    <a href="#">যোগাযোগ</a>
+    <a href="#home" onclick="navigate('home'); return false;">হোম</a>
+    <a href="#intro" onclick="navigate('intro'); return false;">পরিচিতি</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfcQvdfP9jH3AGoiOY02ubyFUbIcbapMfX9_FKOev1UqLT6cA/viewform?usp=header" target="_blank">তথ্য প্রদান</a>
+    <a href="#departments" onclick="navigate('departments'); return false;">বিভাগ সমূহ</a>
+    <a href="#admission" onclick="navigate('admission'); return false;">ভর্তি কার্যক্রম</a>
+    <a href="#hostel" onclick="navigate('hostel'); return false;">আবাসন ফি</a>
+    <a href="#library" onclick="navigate('library'); return false;">লাইব্রেরী</a>
+    <a href="#results" onclick="navigate('results'); return false;">ফলাফল</a>
+    <a href="#notice" onclick="navigate('notice'); return false;">নোটিশ</a>
+    <a href="#contact" onclick="navigate('contact'); return false;">যোগাযোগ</a>
   </nav>
-  
+
 </header>
 
 <div class="header-content">
@@ -431,22 +431,24 @@ nav a:hover::after {
   <div class="image-box"><img src="images/pic4.jpg" alt="ছবি ৪"></div>
 </div>
 
-<a class="main-button" onclick="showIntro()">প্রবেশ করুন</a>
+<a class="main-button" href="#menu-item" onclick="navigate('menu-item'); return false;">প্রবেশ করুন</a>
 
 <div class="intro-overlay" id="intro">
   <div class="intro-text">জামিয়ার ওয়েবসাইটে আপনাকে স্বাগতম</div>
   <div class="menu-grid">
-    <div class="menu-item" onclick="goHome()">হোম</div>
-    <div class="menu-item" onclick="showIntroSection()">পরিচিতি</div>
-    <div class="menu-item" onclick="showDepartments()">বিভাগ সমূহ</div>
-    <div class="menu-item">ভর্তি কার্যক্রম</div>
-    <div class="menu-item">আবাসন ফি</div>
-    <div class="menu-item">লাইব্রেরী</div>
-    <div class="menu-item" onclick="showResults()">ফলাফল</div>
-    <div class="menu-item">নোটিশ</div>
-    <div class="menu-item">যোগাযোগ</div>
+    <div class="menu-item" onclick="navigate('home')">হোম</div>
+    <div class="menu-item" onclick="navigate('intro')">পরিচিতি</div>
+    <div class="menu-item" onclick="navigate('departments')">বিভাগ সমূহ</div>
+    <div class="menu-item" onclick="navigate('admission')">ভর্তি কার্যক্রম</div>
+    <div class="menu-item" onclick="navigate('hostel')">আবাসন ফি</div>
+    <div class="menu-item" onclick="navigate('library')">লাইব্রেরী</div>
+    <div class="menu-item" onclick="navigate('results')">ফলাফল</div>
+    <div class="menu-item" onclick="navigate('notice')">নোটিশ</div>
+    <div class="menu-item" onclick="navigate('contact')">যোগাযোগ</div>
   </div>
 </div>
+
+
 
 <div id="introContent">
   <h2>আমাদের জামিয়ার পরিচিতি</h2>
@@ -513,82 +515,129 @@ nav a:hover::after {
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const menu = document.querySelector('nav'); // id বাদ দিয়ে সরাসরি nav ধরো
-  const icon = document.querySelector('.menu-toggle');
-
-  // মেনু টগল
-  if (icon) {
-    icon.addEventListener('click', function (e) {
-      e.stopPropagation();
-      menu.classList.toggle('show');
-    });
-  }
-
-  // বাইরে ক্লিক করলে মেনু বন্ধ
-  window.addEventListener('click', function (e) {
-    if (!menu.contains(e.target) && !icon.contains(e.target)) {
-      menu.classList.remove('show');
+  document.addEventListener('DOMContentLoaded', function () {
+    const menu = document.querySelector('nav');
+    const icon = document.querySelector('.menu-toggle');
+  
+    // মেনু টগল
+    if (icon) {
+      icon.addEventListener('click', function (e) {
+        e.stopPropagation();
+        menu.classList.toggle('show');
+      });
     }
-  });
-
-  // মেনুতে ক্লিক করলে মেনু বন্ধ হবে
-  menu.querySelectorAll('a').forEach(item => {
-    item.addEventListener('click', function () {
-      menu.classList.remove('show');
+  
+    // বাইরে ক্লিক করলে মেনু বন্ধ
+    window.addEventListener('click', function (e) {
+      if (!menu.contains(e.target) && !icon.contains(e.target)) {
+        menu.classList.remove('show');
+      }
     });
+  
+    // মেনুতে ক্লিক করলে মেনু বন্ধ হবে
+    menu.querySelectorAll('a').forEach(item => {
+      item.addEventListener('click', function () {
+        menu.classList.remove('show');
+      });
+    });
+  
+    // ন্যাভিগেশন হ্যান্ডলার
+    function navigateTo(section) {
+      hideAllSections();
+  
+      switch (section) {
+        case 'home':
+          showHome();
+          break;
+        case 'intro':
+          showIntroSection();
+          break;
+        case 'results':
+          showResults();
+          break;
+        case 'departments':
+          showDepartments();
+          break;
+        default:
+          showHome();
+          break;
+      }
+  
+      history.pushState({ section: section }, '', '#' + section);
+    }
+  
+    // পেজ লোড হলে হ্যাশ অনুযায়ী সেকশন দেখাও
+    window.onload = function () {
+      const hash = location.hash.replace('#', '') || 'home';
+      navigateTo(hash);
+      history.replaceState({ section: hash }, '', '#' + hash);
+    };
+  
+    // Back / Forward button চাপলে
+    window.onpopstate = function (event) {
+      if (event.state && event.state.section) {
+        navigateTo(event.state.section);
+      } else {
+        navigateTo('home');
+      }
+    };
+  
+    // সব সেকশন হাইড করো
+    function hideAllSections() {
+      hideIntro();
+      document.getElementById('introContent').style.display = 'none';
+      document.getElementById('resultsContent').style.display = 'none';
+      document.getElementById('departments').style.display = 'none';
+      document.getElementById('gallerySection').style.display = 'none';
+      document.querySelector('.main-button').style.display = 'none';
+    }
+  
+    function hideIntro() {
+      const intro = document.getElementById('intro');
+      if (intro) intro.classList.remove('active');
+    }
+  
+    function showHome() {
+      hideIntro();
+      document.getElementById('introContent').style.display = 'none';
+      document.getElementById('resultsContent').style.display = 'none';
+      document.getElementById('departments').style.display = 'none';
+      document.getElementById('gallerySection').style.display = 'flex';
+      document.querySelector('.main-button').style.display = 'inline-block';
+    }
+  
+    function showIntroSection() {
+      hideIntro();
+      document.getElementById('gallerySection').style.display = 'none';
+      document.querySelector('.main-button').style.display = 'none';
+      document.getElementById('resultsContent').style.display = 'none';
+      document.getElementById('departments').style.display = 'none';
+      document.getElementById('introContent').style.display = 'block';
+    }
+  
+    function showResults() {
+      hideIntro();
+      document.getElementById('introContent').style.display = 'none';
+      document.getElementById('gallerySection').style.display = 'none';
+      document.getElementById('departments').style.display = 'none';
+      document.querySelector('.main-button').style.display = 'none';
+      document.getElementById('resultsContent').style.display = 'block';
+    }
+  
+    function showDepartments() {
+      hideIntro();
+      document.getElementById('introContent').style.display = 'none';
+      document.getElementById('gallerySection').style.display = 'none';
+      document.getElementById('resultsContent').style.display = 'none';
+      document.querySelector('.main-button').style.display = 'none';
+      document.getElementById('departments').style.display = 'block';
+    }
+  
+    // গ্লোবাল অ্যাক্সেসের জন্য
+    window.navigate = navigateTo;
   });
-});
-  // Show intro screen
-  function showIntro() {
-    document.getElementById('intro').classList.add('active');
-  }
-
-  // Hide intro screen
-  function hideIntro() {
-    document.getElementById('intro').classList.remove('active');
-  }
-
-  // Show intro section
-  function showIntroSection() {
-    hideIntro();
-    document.getElementById('gallerySection').style.display = 'none';
-    document.querySelector('.main-button').style.display = 'none';
-    document.getElementById('resultsContent').style.display = 'none';
-    document.getElementById('departments').style.display = 'none';
-    document.getElementById('introContent').style.display = 'block';
-  }
-
-  // Go back to home section
-  function goHome() {
-    hideIntro();
-    document.getElementById('introContent').style.display = 'none';
-    document.getElementById('resultsContent').style.display = 'none';
-    document.getElementById('departments').style.display = 'none';
-    document.getElementById('gallerySection').style.display = 'flex';
-    document.querySelector('.main-button').style.display = 'inline-block';
-  }
-
-  // Show results section
-  function showResults() {
-    hideIntro();
-    document.getElementById('introContent').style.display = 'none';
-    document.getElementById('gallerySection').style.display = 'none';
-    document.getElementById('departments').style.display = 'none';
-    document.querySelector('.main-button').style.display = 'none';
-    document.getElementById('resultsContent').style.display = 'block';
-  }
-
-  // Show departments section
-  function showDepartments() {
-    hideIntro();
-    document.getElementById('introContent').style.display = 'none';
-    document.getElementById('gallerySection').style.display = 'none';
-    document.getElementById('resultsContent').style.display = 'none';
-    document.querySelector('.main-button').style.display = 'none';
-    document.getElementById('departments').style.display = 'block';
-  }
-</script>
+  </script>
+  
  
  </body>
  </html>
